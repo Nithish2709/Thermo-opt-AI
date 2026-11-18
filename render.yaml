@@ -1,9 +1,11 @@
 services:
   # 1. FastAPI + Machine Learning Backend
   - type: web
-    name: thermo-opt-backend
+    name: thermo-opt-ai-backend
     runtime: python
     plan: free
+    region: oregon
+    branch: main
     buildCommand: pip install -r backend/requirements.txt
     startCommand: uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port $PORT
     envVars:
@@ -14,18 +16,20 @@ services:
 
   # 2. React + Vite Frontend Static Site
   - type: web
-    name: thermo-opt-frontend
+    name: thermo-opt-ai-frontend
     runtime: static
     plan: free
-    buildCommand: cd frontend && npm install && npm run build
+    region: oregon
+    branch: main
+    buildCommand: cd frontend && npm install && VITE_API_BASE_URL="${VITE_API_BASE_URL:-https://${BACKEND_HOST}.onrender.com}" npm run build
     staticPublishPath: frontend/dist
     routes:
       - type: rewrite
         source: /*
         destination: /index.html
     envVars:
-      - key: VITE_API_BASE_URL
+      - key: BACKEND_HOST
         fromService:
           type: web
-          name: thermo-opt-backend
-          property: url
+          name: thermo-opt-ai-backend
+          property: host

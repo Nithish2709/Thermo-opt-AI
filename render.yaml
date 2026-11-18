@@ -14,11 +14,10 @@ services:
       - key: ALLOWED_ORIGINS
         value: "*"
 
-  # 2. React + Vite Frontend Static Site (Served globally on Render CDN)
+  # 2. React + Vite Frontend Static Site (Free by default on Render CDN, no plan field)
   - type: web
     name: thermo-opt-ai-frontend
     runtime: static
-    plan: free
     branch: main
     buildCommand: cd frontend && npm install && VITE_API_BASE_URL="${VITE_API_BASE_URL:-https://${BACKEND_HOST}.onrender.com}" npm run build
     staticPublishPath: frontend/dist

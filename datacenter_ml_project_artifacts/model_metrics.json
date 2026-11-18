@@ -1,0 +1,7 @@
+{
+  "temperature_mae_c": 0.429291366255957,
+  "temperature_rmse_c": 0.5414048172224695,
+  "temperature_r2": 0.8334748680627118,
+  "test_records": 1752,
+  "data_type": "synthetic"
+}

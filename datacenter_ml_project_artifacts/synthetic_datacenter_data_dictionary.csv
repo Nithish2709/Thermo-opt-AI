@@ -1,0 +1,18 @@
+column,unit_or_type,description,origin
+timestamp,Datetime,Hourly simulated observation time,Simulation
+cpu_util_pct,%,CPU utilization,Simulated input
+gpu_util_pct,%,GPU utilization,Simulated input
+ram_util_pct,%,RAM utilization,Simulated input
+active_servers,count,Number of active servers,Simulated input
+workload_type,category,Workload category derived from utilization,Derived feature
+ambient_temp_c,°C,Ambient temperature,Simulated input
+it_power_kw,kW,Estimated IT electrical power,Simulated value
+heat_load_kw,kW,Approximate heat proxy = IT power × heat fraction,Derived target/proxy
+cooling_level,category,Simulated Low/Medium/High cooling setting,Simulated control state
+fan_speed_pct,%,Simulated fan speed,Simulated value
+inlet_temp_c,°C,Simulated inlet temperature,Simulated value
+outlet_temp_c,°C,Simulated outlet temperature,Simulated value
+rack_temp_c,°C,Simulated rack temperature,Simulated value
+cooling_power_kw,kW,Simulated cooling electrical power,Simulated value
+thermal_risk,category,Risk label derived from rack-temperature thresholds,Rule-derived label
+anomaly_label,0/1,Flag for deliberately injected anomalous records,Injected label
